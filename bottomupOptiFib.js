@@ -20,7 +20,7 @@ function fib (n) {
 		dict.set(k, f)
 	}
 
-	console.log(process.memoryUsage())
+	// console.log(process.memoryUsage())
 	return dict.get(n)
 }
 
