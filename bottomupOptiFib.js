@@ -7,17 +7,21 @@ function* range(start, end) {
 }
 
 function fib (n) {
-	const lookupTable = []
+	const dict = new Map()
 
 	let f = 0
 	for (var k of range(1, n)) {
 		if (k < 3) f = 1
-		else f = lookupTable[k - 1] + lookupTable[k - 2]
+		else {
+			f = dict.get(k - 1) + dict.get(k - 2)
+			dict.delete(k - 2)
+		}
 
-		lookupTable[k] = f
+		dict.set(k, f)
 	}
 
-	return lookupTable[n]
+	console.log(process.memoryUsage())
+	return dict.get(n)
 }
 
 console.log(
